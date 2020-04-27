@@ -1,0 +1,32 @@
+{#{% load compress %}#}
+{#{% load sekizai_tags %}#}
+{#{% load staticfiles %}#}
+<!doctype html>
+<html>
+    <head>
+        <title>{% block title %}Buzzword Counter{% endblock title %}</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+{#        {% render_block "css" %}#}
+{#        {% addtoblock 'css' %}#}
+{#            <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">#}
+{#            <link rel="stylesheet" type="text/less" href="{% static 'less/main.less' %}">#}
+{#        {% endaddtoblock %}#}
+{#        {% addtoblock 'external_js' %}#}
+{#            <script src='//code.jquery.com/jquery-2.1.4.min.js'></script>#}
+{#            <script src="{% static 'js/bootstrap.min.js' %}"></script>#}
+{#        {% endaddtoblock %}#}
+    </head>
+    <body>
+        <div class="container">
+            <div id="content">
+                {% include 'counter.html' %}
+            </div>
+        </div>
+{#        {% render_block 'external_css' %}#}
+{#        {% render_block 'extra_css' %}#}
+{#        {% render_block 'css' postprocessor 'compressor.contrib.sekizai.compress' %}#}
+{#        {% render_block 'external_js' %}#}
+{#        {% render_block 'extra_js' %}#}
+{#        {% render_block 'js' postprocessor 'compressor.contrib.sekizai.compress' %}#}
+    </body>
+</html>

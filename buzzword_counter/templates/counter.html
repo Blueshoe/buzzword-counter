@@ -1,0 +1,25 @@
+<h1>Buzzwords</h1>
+<form action="{% url 'increase-counter' %}" method="post">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <th>Buzzword</th>
+            <th>Count</th>
+            <th>Increase</th>
+            <th>Decrease</th>
+        </tr>
+    {% for buzzword in object_list %}
+        <tr>
+            <td>{{ buzzword.word }}</td>
+            <td>{{ buzzword.count }}</td>
+            <td><button type="submit" name="inc_buzzword_pk" value="{{ buzzword.pk }}">+</button></td>
+            <td><button type="submit" name="dec_buzzword_pk" value="{{ buzzword.pk }}">-</button></td>
+        </tr>
+    {% endfor %}
+    </table>
+    <div>
+        <label for="new_buzzword">New Buzzword:</label>
+        <input type="text" id="new_buzzword" name="new_buzzword">
+        <button type="submit">Submit</button>
+    </div>
+</form>

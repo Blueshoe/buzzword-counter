@@ -1,0 +1,3 @@
+-r requirements.txt
+
+pydevd-pycharm~=192.6603.34
