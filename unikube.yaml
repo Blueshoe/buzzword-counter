@@ -1,0 +1,15 @@
+version: '1'
+
+apps:
+  buzzword-counter:
+    deployment: buzzword-counter-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+      options:
+        - compress
+    env:
+      - DJANGO_DEBUG: "True"
+    command: python manage.py collectstatic --noinput --ignore src; python manage.py runserver 0.0.0.0:{port}
+    volumes:
+      - .:/code
