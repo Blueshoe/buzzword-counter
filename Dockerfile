@@ -1,18 +1,11 @@
-FROM python:3.7-slim
+FROM quay.io/blueshoe/python3.9-slim
 ENV PYTHONUNBUFFERED 1
-
-# TODO: comment back once somewhat stable
-#COPY requirements.txt /usr/src/
-#RUN apt update \
-#    && apt install -y libpq-dev gcc python3-dev mime-support gettext libgettextpo-dev \
-#    && pip install -r /usr/src/requirements.txt \
-#    && apt purge -y gcc python3-dev \
-#    && apt autoremove -y --purge
 
 RUN apt update \
     && apt install -y libpq-dev gcc python3-dev mime-support gettext libgettextpo-dev
+RUN /usr/local/bin/python -m pip install --upgrade pip
 COPY requirements.txt /usr/src/
-RUN pip install -r /usr/src/requirements.txt \
+RUN pip3 install -r /usr/src/requirements.txt \
     && apt purge -y gcc python3-dev \
     && apt autoremove -y --purge
 

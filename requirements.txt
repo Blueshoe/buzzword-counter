@@ -3,4 +3,4 @@ celery~=4.4.1
 Django~=2.2.10
 django-extensions
 psycopg2~=2.8.4
-uwsgi~=2.0.18
+django-hurricane~=0.9.0
