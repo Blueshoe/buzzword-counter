@@ -6,10 +6,8 @@ apps:
     build:
       context: .
       dockerfile: Dockerfile
-      options:
-        - compress
-    env:
-      - DJANGO_DEBUG: "True"
-    command: python manage.py collectstatic --noinput --ignore src; python manage.py runserver 0.0.0.0:{port}
+    command: python manage.py serve --command 'collectstatic --no-input' --port {port} --static
     volumes:
       - .:/code
+    env:
+      - DJANGO_DEBUG: "True"

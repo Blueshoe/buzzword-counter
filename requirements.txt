@@ -4,3 +4,5 @@ Django~=2.2.10
 django-extensions
 psycopg2~=2.8.4
 django-hurricane~=0.9.0
+pydevd_pycharm
+debugpy
