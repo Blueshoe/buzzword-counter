@@ -14,14 +14,9 @@ WORKDIR /code
 
 COPY . /code/
 
-EXPOSE 8080
 
 # we should have an unprivileged user to run celery
 # we need a directory for celery uid/gid to store celerybeat pidfile and schedule
 RUN groupadd --gid 1337 bs \
     && useradd --create-home --uid 1337 --gid 1337 --shell /bin/bash bs \
     && mkdir /run/celery/ && chown 1337:1337 /run/celery/
-
-COPY deployment/run_app.sh /usr/src/run_app.sh
-RUN chmod +x /usr/src/run_app.sh
-CMD /usr/src/run_app.sh
