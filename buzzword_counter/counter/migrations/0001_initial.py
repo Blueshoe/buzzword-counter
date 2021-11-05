@@ -7,16 +7,23 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Buzzword',
+            name="Buzzword",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('word', models.CharField(max_length=127)),
-                ('count', models.PositiveSmallIntegerField(blank=True, default=0)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("word", models.CharField(max_length=127)),
+                ("count", models.PositiveSmallIntegerField(blank=True, default=0)),
             ],
         ),
     ]

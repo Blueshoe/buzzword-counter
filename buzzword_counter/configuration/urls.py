@@ -35,22 +35,28 @@ if settings.DEBUG:
 
     def debug_settrace(request):
         # first three octets of docker container interface ip address
-        ip_address = socket.gethostbyname(socket.gethostname()).rsplit(".", maxsplit=1)[0]
+        ip_address = socket.gethostbyname(socket.gethostname()).rsplit(".", maxsplit=1)[
+            0
+        ]
         # substitute last octet for docker host interface
-        ip_address = f'{ip_address}.1'
+        ip_address = f"{ip_address}.1"
         port = 8200
-        print(f'gonna settrace to {ip_address}:{port}')
-        print('Make sure to set correct path mappings of PyCharms python remote debugger!')
-        pydevd_pycharm.settrace(ip_address, port=port, stdoutToServer=True, stderrToServer=True)
-        return HttpResponse('debugger started')
+        print(f"gonna settrace to {ip_address}:{port}")
+        print(
+            "Make sure to set correct path mappings of PyCharms python remote debugger!"
+        )
+        pydevd_pycharm.settrace(
+            ip_address, port=port, stdoutToServer=True, stderrToServer=True
+        )
+        return HttpResponse("debugger started")
 
     urlpatterns += [
-        path('debug_settrace/', debug_settrace),
+        path("debug_settrace/", debug_settrace),
     ]
 
 
 urlpatterns += [
-    path('admin/', admin.site.urls),
-    path('increase-counter/', IncreaseCounterView.as_view(), name='increase-counter'),
-    path('', CounterListView.as_view())
+    path("admin/", admin.site.urls),
+    path("increase-counter/", IncreaseCounterView.as_view(), name="increase-counter"),
+    path("", CounterListView.as_view()),
 ]

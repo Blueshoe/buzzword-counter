@@ -6,7 +6,7 @@ class Buzzword(models.Model):
     count = models.PositiveSmallIntegerField(blank=True, default=0)
 
     class Meta:
-        ordering = ['word']
+        ordering = ["word"]
 
     def __str__(self):
         return f'Buzzword "{self.word}"'
