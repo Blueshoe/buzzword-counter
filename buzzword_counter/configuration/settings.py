@@ -129,3 +129,31 @@ STATIC_ROOT = os.path.join(BASE_DIR, "..", "static")
 
 # configure whether to run the django-app or the celery-worker
 RUN_ENV = os.getenv("DJANGO_RUN_ENV")
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "standard": {
+            "format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "standard",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "propagate": True,
+            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+        },
+        "hurricane": {
+            "handlers": ["console"],
+            "level": os.getenv("DJANGO_HURRICANE_LOG_LEVEL", "INFO"),
+            "propagate": False,
+        },
+    }
+}
